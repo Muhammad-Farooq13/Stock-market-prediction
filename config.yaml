@@ -1,0 +1,76 @@
+# Project configuration
+project_name: "Stock Market Prediction"
+version: "1.0.0"
+
+# Data settings
+data:
+  dataset_name: "Daily_Global_Stock_Market_Indicators.csv"
+  target_column: "Close"  # Update this based on your dataset
+  date_column: "Date"     # Update this based on your dataset
+  test_size: 0.2
+  validation_size: 0.1
+
+# Feature engineering
+features:
+  moving_averages: [5, 10, 20, 50, 200]
+  ema_spans: [12, 26]
+  rsi_period: 14
+  macd:
+    fast_period: 12
+    slow_period: 26
+    signal_period: 9
+  bollinger_bands:
+    window: 20
+    num_std: 2.0
+
+# Model training
+models:
+  random_state: 42
+  models_to_train:
+    - linear_regression
+    - random_forest
+    - xgboost
+    - lightgbm
+  
+  # Hyperparameters
+  random_forest:
+    n_estimators: 100
+    max_depth: 10
+    min_samples_split: 5
+  
+  xgboost:
+    n_estimators: 100
+    learning_rate: 0.1
+    max_depth: 5
+  
+  lightgbm:
+    n_estimators: 100
+    learning_rate: 0.1
+    max_depth: 5
+
+# MLOps settings
+mlops:
+  mlflow:
+    tracking_uri: "sqlite:///mlflow.db"
+    experiment_name: "stock_market_prediction"
+  
+  monitoring:
+    enable: true
+    check_interval_days: 7
+  
+  retraining:
+    trigger: "performance_degradation"
+    threshold_rmse: 0.1
+
+# Flask API settings
+api:
+  host: "0.0.0.0"
+  port: 5000
+  debug: false
+  workers: 4
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_output: true
