@@ -1,0 +1,48 @@
+# CI-safe requirements for Stock-market-prediction
+# tensorflow==2.13.0 and keras==2.13.1 are excluded from CI
+# because they require a GPU runner and are 2+ GB in size.
+# They are still in requirements.txt for local/GPU development.
+numpy==1.24.3
+pandas==2.0.3
+scipy==1.11.1
+
+# Machine Learning
+scikit-learn==1.3.0
+xgboost==1.7.6
+lightgbm==4.0.0
+
+# Data Visualization
+matplotlib==3.7.2
+seaborn==0.12.2
+plotly==5.15.0
+
+# Web Framework
+flask==2.3.2
+flask-cors==4.0.0
+gunicorn==21.2.0
+
+# MLOps
+mlflow==2.5.0
+
+# Model Optimization
+optuna==3.2.0
+
+# Testing
+pytest==7.4.0
+pytest-cov==4.1.0
+pytest-mock==3.11.1
+
+# Code Quality
+pylint==2.17.4
+flake8==6.0.0
+black==23.7.0
+
+# Utilities
+python-dotenv==1.0.0
+pyyaml==6.0.1
+joblib==1.3.1
+tqdm==4.65.0
+requests==2.31.0
+python-dateutil==2.8.2
+loguru==0.7.0
+openpyxl==3.1.2
