@@ -32,7 +32,8 @@ class TestFeatureEngineer:
 
         assert "Close_MA_3" in df_features.columns
         assert "Close_MA_5" in df_features.columns
-        assert not df_features["Close_MA_3"].iloc[:2].isna().all()  # First values are NaN
+        # Rolling window of 3 means the first 2 values are NaN
+        assert df_features["Close_MA_3"].iloc[:2].isna().all()
 
     def test_create_rsi(self):
         """Test RSI creation"""

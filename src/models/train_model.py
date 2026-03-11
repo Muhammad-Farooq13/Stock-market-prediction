@@ -53,9 +53,9 @@ class ModelTrainer:
             Model instance
         """
         models = {
-            "linear_regression": LinearRegression(**kwargs),
-            "ridge": Ridge(**kwargs),
-            "lasso": Lasso(**kwargs),
+            "linear_regression": LinearRegression(),
+            "ridge": Ridge(**{k: v for k, v in kwargs.items() if k in ("alpha", "max_iter")}),
+            "lasso": Lasso(**{k: v for k, v in kwargs.items() if k in ("alpha", "max_iter")}),
             "random_forest": RandomForestRegressor(
                 n_estimators=kwargs.get("n_estimators", 100),
                 max_depth=kwargs.get("max_depth", 10),
