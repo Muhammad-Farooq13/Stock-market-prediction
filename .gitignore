@@ -145,11 +145,19 @@ $RECYCLE.BIN/
 # Project specific
 models/*.pkl
 !models/.gitkeep
+# Allow pre-trained model artefacts committed for Streamlit Cloud
+!models/regression_xgb.joblib
+!models/classification_xgb.joblib
+!models/scaler_xgb.joblib
+!models/label_encoder.joblib
+!models/metrics.joblib
 logs/*.log
 logs/**/*.log
 !logs/.gitkeep
 data/processed/*
 !data/processed/.gitkeep
+# Allow pre-computed feature parquet for Streamlit dashboard
+!data/processed/features.parquet
 mlflow.db
 mlruns/
 
