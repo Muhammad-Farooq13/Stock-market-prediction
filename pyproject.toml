@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stock-market-prediction"
+version = "1.0.0"
+description = "End-to-end ML pipeline for global stock market price and direction prediction"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Muhammad Farooq", email = "mfarooqshafee333@gmail.com" }]
+requires-python = ">=3.8"
+keywords = ["machine-learning", "stock-market", "xgboost", "mlops", "flask"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Office/Business :: Financial",
+]
+dynamic = ["dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[project.scripts]
+stock-market-train = "src.models.train_model:main"
+stock-market-predict = "src.models.predict:main"
+stock-market-api = "flask_app:main"
+
+[project.urls]
+Homepage = "https://github.com/Muhammad-Farooq13/Stock-market-prediction"
+Repository = "https://github.com/Muhammad-Farooq13/Stock-market-prediction"
+
+[tool.black]
+line-length = 100
+target-version = ["py38", "py39", "py310", "py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+known_first_party = ["src"]
+
+[tool.flake8]
+max-line-length = 100
+extend-ignore = ["E203", "W503"]
+exclude = [".git", "__pycache__", "build", "dist", ".eggs", ".venv", "venv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"

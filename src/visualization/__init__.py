@@ -2,4 +2,4 @@
 
 from .visualize import Visualizer
 
-__all__ = ['Visualizer']
+__all__ = ["Visualizer"]
